@@ -2,7 +2,7 @@ class Solution {
     bool Divisor(vector<int>& nums, int threshold, int minDiv){
         long long div = 0;
         for(int i = 0; i < nums.size(); i++){
-            div += ceil((nums[i] + minDiv - 1)/minDiv);
+            div += ceil((double)nums[i]/minDiv);
         }
         return div <= threshold;
     }

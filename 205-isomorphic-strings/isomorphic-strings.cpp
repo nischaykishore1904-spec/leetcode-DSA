@@ -7,19 +7,19 @@ public:
         }
 
         // Create a hash map to store character mappings
-        unordered_map<char, char> charMappingMap;
+        unordered_map<char, char> charMap;
 
         for (int i = 0; i < s.length(); i++) {
 
             char original = s[i];
             char replacement = t[i];
 
-            if (charMappingMap.find(original) == charMappingMap.end()) {
+            if (charMap.find(original) == charMap.end()) {
 
                 // Check if replacement is already mapped
                 bool alreadyUsed = false;
 
-                for (auto it : charMappingMap) {
+                for (auto it : charMap) {
                     if (it.second == replacement) {
                         alreadyUsed = true;
                         break;
@@ -27,7 +27,7 @@ public:
                 }
 
                 if (!alreadyUsed) {
-                    charMappingMap[original] = replacement;
+                    charMap[original] = replacement;
                 }
                 else {
                     return false;
@@ -35,7 +35,7 @@ public:
             }
             else {
 
-                char mappedCharacter = charMappingMap[original];
+                char mappedCharacter = charMap[original];
 
                 if (mappedCharacter != replacement) {
                     return false;

@@ -16,27 +16,23 @@ public:
         ListNode* t2 = l2;
         ListNode* curr = dummyNode;
         int carry = 0;
-        
+
         while(t1 != NULL || t2 != NULL){
             int ans = carry;
 
-            if(t1) ans += t1->val ;
-            if(t2) ans += t2->val ;
-           
+            if(t1) ans += t1 -> val;
+            if(t2) ans += t2 -> val;
+
             ListNode* newNode = new ListNode(ans % 10);
-            carry = ans/10;
-
-            curr->next = newNode;
+            carry = ans / 10;
+            curr -> next = newNode;
             curr = newNode;
-
-            if(t1) t1 = t1->next;
-            if(t2) t2 = t2->next;
-             
+            if(t1) t1 = t1 -> next;
+            if(t2) t2 = t2 -> next;
         }
         if(carry){
             ListNode* newNode = new ListNode(carry);
             curr -> next = newNode;
-
         }
         return dummyNode -> next;
     }

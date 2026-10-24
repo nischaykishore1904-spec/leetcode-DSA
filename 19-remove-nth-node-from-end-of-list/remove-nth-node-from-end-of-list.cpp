@@ -29,8 +29,8 @@ public:
 
         ListNode* temp = head;
         
-        int count = 0;
-        while(count < LL_size - n - 1){
+        int count = 1;
+        while(count < LL_size - n){
             temp = temp -> next;
             count++;
         }

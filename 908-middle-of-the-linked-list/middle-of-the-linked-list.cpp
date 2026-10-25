@@ -10,25 +10,17 @@
  */
 class Solution {
 public:
-    int sizeLL(ListNode* head){
-        int count = 0;
-        ListNode* temp = head;
-        while(temp){
-            temp = temp -> next;
-            count++;
-        }
-        return count;
-    }
+    
     ListNode* middleNode(ListNode* head) {
         if(head == NULL || head -> next == NULL) return head;
-        ListNode* temp = head;
+        
+        ListNode* slow = head;
+        ListNode* fast = head;
 
-        int sizeOfLL = sizeLL(head);
-        int mid = sizeOfLL/2;
-
-        for(int i = 0; i < mid; i++){
-            temp = temp -> next;
+        while(fast != NULL && fast -> next != NULL){
+            slow = slow -> next;
+            fast = fast -> next -> next;
         }
-        return temp;
+        return slow;
     }
 };

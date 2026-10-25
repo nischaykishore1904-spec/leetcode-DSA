@@ -10,28 +10,19 @@
  */
 class Solution {
 public:
-    int size(ListNode* head){
-        int count = 0;
-        ListNode* temp = head;
-        while(temp){
-            count++;
-            temp = temp -> next;
-        }
-        return count;
-    }
     ListNode* deleteMiddle(ListNode* head) {
         if(head == NULL) return head;
         if(head -> next == NULL) return NULL;
-        int size_LL = size(head);
-        int mid = size_LL/2;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* prev = NULL;
 
-        ListNode* temp = head;
-        for(int i = 0; i < mid-1; i++){
-            temp = temp -> next;
+        while(fast != NULL && fast -> next != NULL){
+            prev = slow;
+            slow = slow ->next;
+            fast = fast -> next -> next;
         }
-        ListNode* garbage = temp -> next;
-        temp -> next = temp -> next -> next;
-        delete garbage;
+        prev -> next = prev -> next -> next; 
         return head;
     }
 };
